@@ -8,4 +8,4 @@ Functional requirements:
 Non functional requirements:
 
 - The system must implement function as a service in some part of it.
-
+as
