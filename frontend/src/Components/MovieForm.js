@@ -6,7 +6,7 @@ const MovieForm = () => {
   
   function handlerSubmit(e){
     e.PreventDefault();
-    alert("se envió")
+    
   }
   return (
     <form method="post" onSubmit={handlerSubmit}>
