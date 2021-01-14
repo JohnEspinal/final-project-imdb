@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const movieRouter = require('./routes/movies.js');
 
-app.use(bodyparser.json({ extended: false}));
+app.use(bodyparser.json({ limit: "15mb", extended: true}));
+app.use(bodyparser.urlencoded({limit: "15mb", extended: true}));
 
 app.use('/posts', movieRouter);
 
