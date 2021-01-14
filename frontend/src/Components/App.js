@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import React from "react";
+import ReactDom from "react-dom";
+import MovieForm from "./MovieForm";
 
-const App = () => (
-  <h1>Frontend tools ready</h1>
-);
+const App = () => <MovieForm />;
 
-ReactDom.render(<App />, document.getElementById('root'));
+ReactDom.render(<App />, document.getElementById("root"));
