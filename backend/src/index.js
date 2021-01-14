@@ -1,10 +1,20 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
 
+app.use(bodyparser.json({ extended: false}))
 
-const getMovies = require('./routes/getMovies');
+const getMovies = require('./routes/movies');
 
 app.get('/', getMovies);
 
-app.listen(3001, () => console.log('Listening on port 3001'));
 
+const PORT = process.env.PORT || 3001;
+const CONNECTION_URL = 'mongodb+srv://finalprojectuser:finalprojectuser@cluster0.q90d4.mongodb.net/<dbname>?retryWrites=true&w=majorityCopy';
+
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
+    .then(()=> app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`)))
+    .catch((error) => console.log(error.message));
+
+mongoose.set('useFindAndModify', false);
