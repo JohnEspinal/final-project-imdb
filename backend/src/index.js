@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+const movieRouter = require('./routes/movies.js');
 
-app.use(bodyparser.json({ extended: false}))
+app.use(bodyparser.json({ extended: false}));
 
-const getMovies = require('./routes/movies');
+app.use('/posts', movieRouter);
 
-app.get('/', getMovies);
+//const movie = require('./routes/movies.js');
+
+//app.get('/', movie.getMovies());
 
 
 const PORT = process.env.PORT || 3001;
