@@ -22,7 +22,7 @@ const MovieForm = () => {
       <p>Enter the movie Description: </p>
       <input
         type="text"
-        name="Description"
+        name="description"
         onChange={(e) => setDescription(e.target.value)}
         
       />
