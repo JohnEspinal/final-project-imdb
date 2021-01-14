@@ -8,6 +8,6 @@
 
 module.exports = (req, res) => {
     
-    res.send("Hello world! I'm a contenarized app!!");
+    res.send("Hello world! I'm a containerized app!!");
 };
 
