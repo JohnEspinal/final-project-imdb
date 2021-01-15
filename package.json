@@ -4,19 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"frontend/src/Components/**/*.{js,html}\" --write",
-    "dev": " parcel frontend/src/index.html",
-    "lint": "eslint \"frontend/src/**/*.{js,jsx}\" --quiet"
-=======
+    "devs": " parcel frontend/src/index.html",
+    "lint": "eslint \"frontend/src/**/*.{js,jsx}\" --quiet",
     "dev": "nodemon backend/src/index.js"
->>>>>>> backEnd
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
@@ -29,14 +25,10 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "parcel-bundler": "^1.12.4"
-=======
+    "parcel-bundler": "^1.12.4",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.11"
-  },
-  "devDependencies": {
+    "mongoose": "^5.11.11",
     "nodemon": "^2.0.7"
->>>>>>> backEnd
   }
 }
