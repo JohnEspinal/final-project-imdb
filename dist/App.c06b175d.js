@@ -29799,24 +29799,24 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var MovieForm = function MovieForm() {
-  var _useState = (0, _react.useState)(""),
+  var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       MovieName = _useState2[0],
       setMovieName = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(""),
+  var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       Description = _useState4[0],
       setDescription = _useState4[1];
 
   function handlerSubmit(e) {
     e.PreventDefault();
-    alert("se envió");
   }
 
   return /*#__PURE__*/_react.default.createElement("form", {
     method: "post",
-    onSubmit: handlerSubmit
+    onSubmit: handlerSubmit,
+    className: "Form"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "movie :", MovieName), /*#__PURE__*/_react.default.createElement("p", null, "Enter the movie name: "), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "MovieName",
@@ -29825,7 +29825,7 @@ var MovieForm = function MovieForm() {
     }
   }), /*#__PURE__*/_react.default.createElement("h1", null, Description), /*#__PURE__*/_react.default.createElement("p", null, "Enter the movie Description: "), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    name: "Description",
+    name: "description",
     onChange: function onChange(e) {
       return setDescription(e.target.value);
     }
@@ -29851,7 +29851,7 @@ var App = function App() {
   return /*#__PURE__*/_react.default.createElement(_MovieForm.default, null);
 };
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById("root"));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
 },{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./MovieForm":"Components/MovieForm.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -29880,7 +29880,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52459" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
