@@ -6,18 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"frontend/src/Components/**/*.{js,html}\" --write",
-    "devs": " parcel frontend/src/index.html",
-    "lint": "eslint \"frontend/src/**/*.{js,jsx}\" --quiet",
-    "dev": "nodemon backend/src/index.js"
+    "dev": " parcel frontend/src/index.html",
+    "lint": "eslint \"frontend/src/**/*.{js,jsx}\" --quiet"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "@babel/polyfill": "^7.12.1",
+    "@styled-icons/boxicons-regular": "^10.23.0",
+    "axios": "^0.21.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1",
+    "styled-icons": "^10.25.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
@@ -25,10 +32,6 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "parcel-bundler": "^1.12.4",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.11",
-    "nodemon": "^2.0.7"
+    "parcel-bundler": "^1.12.4"
   }
 }

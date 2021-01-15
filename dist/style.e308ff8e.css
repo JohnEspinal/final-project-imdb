@@ -1,8 +1,73 @@
-.Form{
-    background-color: aqua;
-    display: inline-block;
-    width: 40%;
+html,
+body {
+    background-color: mediumaquamarine;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    height: 100%;
 }
 
+li {
+    display: inline-block;
+    padding: 20px;
+}
+
+a {
+    font-size: 120%;
+    display: block;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(248, 112, 134);
+    cursor: pointer;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.headerr {
+    width: 100%;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.logo {
+    display: inline-block;
+    position: relative;
+    font-size: 170%;
+    left: 7%;
+}
+
+.menu {
+    position: relative;
+    display: inline-block;
+    left: 20%;
+}
+
+form {
+    background-color: wheat;
+    display: inline-block;
+    position: relative;
+    left: 10%;
+    top:15px;
+    width: 40%;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 25px;
+}
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
