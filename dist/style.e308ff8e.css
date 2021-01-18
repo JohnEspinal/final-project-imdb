@@ -5,6 +5,7 @@ body {
     padding: 0;
     top: 0;
     height: 100%;
+    font-size: 17px;
 }
 
 li {
@@ -12,7 +13,7 @@ li {
     padding: 20px;
 }
 
-a {
+.menu a {
     font-size: 120%;
     display: block;
     color: #000;
@@ -20,21 +21,21 @@ a {
     text-decoration: none;
 }
 
-a:link {
+.headerr a:link {
     text-decoration: none;
 }
 
-a:visited {
+.headerr a:visited {
     text-decoration: none;
 }
 
-a:hover {
+.headerr a:hover {
     text-decoration: none;
     color: rgb(248, 112, 134);
     cursor: pointer;
 }
 
-a:active {
+.headerr a:active {
     text-decoration: none;
 }
 
@@ -58,16 +59,28 @@ a:active {
     left: 20%;
 }
 
-form {
+.form {
     background-color: wheat;
     display: inline-block;
     position: relative;
     left: 10%;
-    top:15px;
+    top: 15px;
     width: 40%;
     border: 2px solid white;
     padding: 10px;
     border-radius: 25px;
+    color: black;
+}
+
+.title {
+    color: gray;
+    text-decoration: none;
+    
+}
+
+.description {
+    color: rgb(248, 112, 134);
+    font-size: 17px;
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

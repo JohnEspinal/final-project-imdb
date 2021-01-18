@@ -1,5 +1,5 @@
-import React from 'react';
-import MovieIcon from '../icons/Movie';
+import React from "react";
+import MovieIcon from "../icons/Movie";
 
 const NavBar = () => (
   <header className="headerr">
@@ -10,10 +10,10 @@ const NavBar = () => (
     <nav className="menu">
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a href="/movies/add">Home</a>
         </li>
         <li>
-          <a href="/About">Movies</a>
+          <a href="/">Movies</a>
         </li>
       </ul>
     </nav>
