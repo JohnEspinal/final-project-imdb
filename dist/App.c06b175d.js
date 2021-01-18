@@ -35189,7 +35189,7 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
                 e.preventDefault();
                 _context.prev = 1;
                 _context.next = 4;
-                return _axios.default.post("http://localhost:3001/movies/add", _this.state).then(function (res) {
+                return _axios.default.get('http://localhost:3001/movies/add', _this.state).then(function (res) {
                   console.log(res);
                 });
 
@@ -35216,11 +35216,11 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
     }());
 
     _this.state = {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       cast: [],
       languages: [],
-      Date: ""
+      Date: ''
     };
     return _this;
   }
@@ -37423,7 +37423,79 @@ var NavBar = function NavBar() {
 
 var _default = NavBar;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","../icons/Movie":"icons/Movie.js"}],"Components/Results.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../icons/Movie":"icons/Movie.js"}],"../../node_modules/@styled-icons/boxicons-regular/Trash/Trash.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TrashDimensions = exports.Trash = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var React = _interopRequireWildcard(require("react"));
+
+var _styledIcon = require("@styled-icons/styled-icon");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Trash = /*#__PURE__*/React.forwardRef(function (props, ref) {
+  var attrs = {
+    "fill": "currentColor",
+    "xmlns": "http://www.w3.org/2000/svg"
+  };
+  return /*#__PURE__*/React.createElement(_styledIcon.StyledIconBase, (0, _extends2.default)({
+    iconAttrs: attrs,
+    iconVerticalAlign: "middle",
+    iconViewBox: "0 0 24 24"
+  }, props, {
+    ref: ref
+  }), /*#__PURE__*/React.createElement("path", {
+    fill: "none",
+    d: "M17.004 20l-.001-12h-10v12h10.001zm-4.001-10h2v8h-2v-8zm-4 0h2v8h-2v-8zm0-6h6v2h-6z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M5.003 20c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2h-6c-1.103 0-2 .897-2 2v2h-4v2h2v12zm4-16h6v2h-6V4zm-1 4h9l.001 12H7.003V8h1z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M9.003 10h2v8h-2zm4 0h2v8h-2z"
+  }));
+});
+exports.Trash = Trash;
+Trash.displayName = 'Trash';
+var TrashDimensions = {
+  height: 24,
+  width: 24
+};
+exports.TrashDimensions = TrashDimensions;
+},{"@babel/runtime/helpers/extends":"../../node_modules/@babel/runtime/helpers/extends.js","react":"../../node_modules/react/index.js","@styled-icons/styled-icon":"../../node_modules/@styled-icons/styled-icon/index.esm.js"}],"icons/Trash.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Trash = require("@styled-icons/boxicons-regular/Trash");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TrashIcon = function TrashIcon() {
+  return /*#__PURE__*/_react.default.createElement(_Trash.Trash, {
+    color: "mediumorchid",
+    width: "30px",
+    height: "8%",
+    display: "inline-block"
+  });
+};
+
+var _default = TrashIcon;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","@styled-icons/boxicons-regular/Trash":"../../node_modules/@styled-icons/boxicons-regular/Trash/Trash.esm.js"}],"Components/Results.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37436,6 +37508,8 @@ var _axios = _interopRequireDefault(require("axios"));
 var _react = _interopRequireDefault(require("react"));
 
 var _router = require("@reach/router");
+
+var _Trash = _interopRequireDefault(require("../icons/Trash"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37485,14 +37559,19 @@ var Results = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Results, [{
     key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getData();
+    }
+  }, {
+    key: "getData",
     value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var _getData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
         var url, resp, data;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                url = "http://localhost:3001/movies";
+                url = 'http://localhost:3001/movies';
                 _context.next = 3;
                 return fetch(url);
 
@@ -37503,13 +37582,12 @@ var Results = /*#__PURE__*/function (_React$Component) {
 
               case 6:
                 data = _context.sent;
-                console.log(data);
                 this.setState({
                   isLoading: true,
                   movies: data
                 });
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -37517,27 +37595,48 @@ var Results = /*#__PURE__*/function (_React$Component) {
         }, _callee, this);
       }));
 
-      function componentDidMount() {
-        return _componentDidMount.apply(this, arguments);
+      function getData() {
+        return _getData.apply(this, arguments);
       }
 
-      return componentDidMount;
+      return getData;
     }()
+  }, {
+    key: "delete",
+    value: function _delete(_id) {
+      var _this2 = this;
+
+      fetch("http://localhost:3001/movies/delete/".concat(_id), {
+        method: 'DELETE' // headers:{
+        //   'content-Type':'application/json'
+        // },
+
+      }).then(function (result) {
+        result.json().then(function (resp) {
+          alert('movie has been delete');
+
+          _this2.getData();
+        });
+      });
+    }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var movies = this.state.movies;
-      return /*#__PURE__*/_react.default.createElement(_router.Link, {
-        to: "/"
-      }, /*#__PURE__*/_react.default.createElement("div", null, movies.map(function (item) {
-        return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", {
-          className: "titles",
-          key: item._id
-        }, item.title), /*#__PURE__*/_react.default.createElement("p", {
-          className: "description",
-          key: item._id
-        }, item.description));
-      })));
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Movies list"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("table", {
+        cellSpacing: "30",
+        border: "1"
+      }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Title"), /*#__PURE__*/_react.default.createElement("th", null, " Description "), /*#__PURE__*/_react.default.createElement("th", null, "Cast"), /*#__PURE__*/_react.default.createElement("th", null, "Languages"))), /*#__PURE__*/_react.default.createElement("tbody", null, this.state.movies.map(function (item, i) {
+        return /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, item.title), /*#__PURE__*/_react.default.createElement("td", null, item.description), /*#__PURE__*/_react.default.createElement("td", null, item.cast), /*#__PURE__*/_react.default.createElement("td", null, item.languages), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+          to: "/movies/edit/".concat(item._id)
+        }, "Edit")), /*#__PURE__*/_react.default.createElement("span", {
+          onClick: function onClick() {
+            return _this3.delete(item._id);
+          }
+        }, /*#__PURE__*/_react.default.createElement(_Trash.default, null, "delete")));
+      })))));
     }
   }]);
 
@@ -37546,7 +37645,181 @@ var Results = /*#__PURE__*/function (_React$Component) {
 
 var _default = Results;
 exports.default = _default;
-},{"axios":"../../node_modules/axios/index.js","react":"../../node_modules/react/index.js","@reach/router":"../../node_modules/@reach/router/es/index.js"}],"Components/App.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","react":"../../node_modules/react/index.js","@reach/router":"../../node_modules/@reach/router/es/index.js","../icons/Trash":"icons/Trash.js"}],"Components/Update.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _router = require("@reach/router");
+
+require("regenerator-runtime/runtime");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var MovieFormUpdate = /*#__PURE__*/function (_React$Component) {
+  _inherits(MovieFormUpdate, _React$Component);
+
+  var _super = _createSuper(MovieFormUpdate);
+
+  function MovieFormUpdate(props) {
+    var _this;
+
+    _classCallCheck(this, MovieFormUpdate);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "changeHandler", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _this.state = {
+      title: '',
+      description: '',
+      cast: [],
+      languages: [],
+      date: ''
+    };
+    return _this;
+  }
+
+  _createClass(MovieFormUpdate, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(_id) {
+        var _this2 = this;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                fetch("http://localhost:3001/movies/edit/".concat(_id)).then(response.json().then(function (result) {
+                  _this2.setState({
+                    title: result.title,
+                    description: result.description,
+                    cast: result.cast,
+                    languages: result.languages,
+                    date: result.date
+                  });
+                }));
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function componentDidMount(_x) {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "update",
+    value: function update() {
+      fetch("http://localhost:3001/movies/edit/".concat(_id), {
+        method: 'PUT',
+        headers: {
+          'content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+      }).then(function (result) {
+        result.json().then(function (resp) {
+          alert('movie has been updated');
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          title = _this$state.title,
+          description = _this$state.description,
+          cast = _this$state.cast,
+          languages = _this$state.languages,
+          postedDate = _this$state.postedDate;
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "form"
+      }, /*#__PURE__*/_react.default.createElement("form", {
+        onSubmit: this.submitHandler
+      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Title"), /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        name: "title",
+        value: title,
+        onChange: this.changeHandler
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Description"), /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        name: "description",
+        value: description,
+        onChange: this.changeHandler
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("select", {
+        name: "cars",
+        id: "cars"
+      }, /*#__PURE__*/_react.default.createElement("option", {
+        value: "volvo"
+      }, "Volvo"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "saab"
+      }, "Saab"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "mercedes"
+      }, "Mercedes"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "audi"
+      }, "Audi"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Date"), /*#__PURE__*/_react.default.createElement("input", {
+        type: "date",
+        name: "date",
+        value: postedDate,
+        onChange: this.changeHandler
+      })), /*#__PURE__*/_react.default.createElement("button", {
+        type: "submit"
+      }, "Submit")));
+    }
+  }]);
+
+  return MovieFormUpdate;
+}(_react.default.Component);
+
+exports.default = MovieFormUpdate;
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","@reach/router":"../../node_modules/@reach/router/es/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -37561,6 +37834,8 @@ var _NavBar = _interopRequireDefault(require("./NavBar"));
 
 var _Results = _interopRequireDefault(require("./Results"));
 
+var _Update = _interopRequireDefault(require("./Update"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -37568,11 +37843,15 @@ var App = function App() {
     path: "/movies/add"
   }), /*#__PURE__*/_react.default.createElement(_Results.default, {
     path: "/"
+  }), /*#__PURE__*/_react.default.createElement(_Update.default, {
+    path: "/movies/edit/id"
+  }), /*#__PURE__*/_react.default.createElement(_Results.default, {
+    path: "/movies/delete/id"
   })));
 };
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById("root"));
-},{"react":"../../node_modules/react/index.js","@reach/router":"../../node_modules/@reach/router/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./MovieForm":"Components/MovieForm.js","./NavBar":"Components/NavBar.js","./Results":"Components/Results.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
+},{"react":"../../node_modules/react/index.js","@reach/router":"../../node_modules/@reach/router/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./MovieForm":"Components/MovieForm.js","./NavBar":"Components/NavBar.js","./Results":"Components/Results.js","./Update":"Components/Update.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37600,7 +37879,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51743" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53077" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,5 +1,5 @@
-import React from "react";
-import MovieIcon from "../icons/Movie";
+import React from 'react';
+import MovieIcon from '../icons/Movie';
 
 const NavBar = () => (
   <header className="headerr">

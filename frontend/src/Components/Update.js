@@ -10,7 +10,7 @@ import axios from 'axios';
 import { Link } from '@reach/router';
 import 'regenerator-runtime/runtime';
 
-export default class MovieForm extends React.Component {
+export default class MovieFormUpdate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,35 +18,41 @@ export default class MovieForm extends React.Component {
       description: '',
       cast: [],
       languages: [],
-      Date: '',
+      date: '',
     };
+  }
+
+  async componentDidMount(_id) {
+    fetch(`http://localhost:3001/movies/edit/${_id}`).then(
+      response.json().then((result) => {
+        this.setState({
+          title: result.title,
+          description: result.description,
+          cast: result.cast,
+          languages: result.languages,
+          date: result.date,
+        });
+      }),
+    );
   }
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSelect = (e) => {
-    const LOl = [];
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < e.length; i++) {
-      LOl.push(e[i].value);
-    }
-    this.setState.languages(LOl);
-  };
-
-  submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      await axios
-        .get('http://localhost:3001/movies/add', this.state)
-        .then((res) => {
-          console.log(res);
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  update() {
+    fetch(`http://localhost:3001/movies/edit/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    }).then((result) => {
+      result.json().then((resp) => {
+        alert('movie has been updated');
+      });
+    });
+  }
 
   render() {
     const {
