@@ -15,6 +15,9 @@ const NavBar = () => (
         <li>
           <a href="/">Movies</a>
         </li>
+         <li>
+          <a href="/movies/edit/id">Edit</a>
+        </li>
       </ul>
     </nav>
   </header>

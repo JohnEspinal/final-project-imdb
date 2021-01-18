@@ -16,43 +16,36 @@ export default class MovieFormUpdate extends React.Component {
     this.state = {
       title: '',
       description: '',
+      movieReleaseDate: '',
       cast: [],
+      genre:[],
       languages: [],
-      date: '',
     };
-  }
-
-  async componentDidMount(_id) {
-    fetch(`http://localhost:3001/movies/edit/${_id}`).then(
-      response.json().then((result) => {
-        this.setState({
-          title: result.title,
-          description: result.description,
-          cast: result.cast,
-          languages: result.languages,
-          date: result.date,
-        });
-      }),
-    );
   }
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  update() {
-    fetch(`http://localhost:3001/movies/edit/${_id}`, {
-      method: 'PUT',
-      headers: {
-        'content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state),
-    }).then((result) => {
-      result.json().then((resp) => {
-        alert('movie has been updated');
+  update = () => {
+    const data = {
+      title: 'titanic 3',
+      description:
+        'fue un transatlántico británico, el mayor barco de pasajeros del mundo al finalizar su construcción, que se hundió durante la noche del 14 y la madrugada del 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1496 personas de las 2208 que iban a bordo, lo que convierte a esta catástrofe en uno de los mayores naufragios de la historia ocurridos en tiempos de paz. Siendo construido entre 1909 y 1912 en los astilleros de Harland & Wolff de Belfast, el Titanic constituía el segundo buque de un trío de grandes transatlánticos (siendo el primero el RMS Olympic y el tercero el HMHS Britannic), los cuales eran propiedad de la compañía naviera White Star Line, conocidos como la clase Olympic.,',
+      movieReleaseDate: 2011,
+      cast: ['Leonardo Di Caprio', 'Rose'],
+      genre: ['action', ' romance'],
+      languages: ['español', ' ingles'],
+    };
+    axios
+      .put('http://localhost:3001/movies/edit/600613d4fde07717881f3232', data)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
-  }
+  };
 
   render() {
     const {
@@ -60,7 +53,8 @@ export default class MovieFormUpdate extends React.Component {
     } = this.state;
     return (
       <div className="form">
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.update}>
+          <h1>Edit Movie</h1>
           <div>
             <p>Title</p>
             <input
@@ -80,15 +74,6 @@ export default class MovieFormUpdate extends React.Component {
             />
           </div>
           <div>
-            <select name="cars" id="cars">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-          </div>
-          <div />
-          <div>
             <p>Date</p>
             <input
               type="date"
@@ -96,6 +81,32 @@ export default class MovieFormUpdate extends React.Component {
               value={postedDate}
               onChange={this.changeHandler}
             />
+          </div>
+          <div>
+          <div>
+            <p>Cast</p>
+            <input
+              type="text"
+              name="cast"
+              value={cast}
+            />
+          </div>
+          <div>
+            <p>Genre</p>
+            <select>
+              <option value="romance">Romance</option>
+              <option value="accion">Accion</option>
+              <option value="terror">Terror</option>
+              <option value="horror">horror</option>
+            </select>
+          </div>
+          <div>
+            <p>Languages</p>
+            <select>
+              <option value="espanol">Español</option>
+              <option value="ingles">Ingles</option>
+            </select>
+          </div>
           </div>
           <button type="submit">Submit</button>
         </form>

@@ -26,7 +26,7 @@ class Results extends React.Component {
     this.getData();
   }
 
-  async getData(){
+  async getData() {
     const url = 'http://localhost:3001/movies';
     const resp = await fetch(url);
     const data = await resp.json();
@@ -53,7 +53,7 @@ class Results extends React.Component {
       <div>
         <h1>Movies list</h1>
         <div>
-          <table cellSpacing="30" border="1">
+          <table cellSpacing="30" border="1 solid black">
             <thead>
               <tr>
                 <th>Title</th>
@@ -70,7 +70,7 @@ class Results extends React.Component {
                   <td>{item.cast}</td>
                   <td>{item.languages}</td>
                   <td>
-                    <Link to={`/movies/edit/${item._id}`}>Edit</Link>
+                    <Link to={`/movies/edit/id`}>Edit</Link>
                   </td>
                   <span onClick={() => this.delete(item._id)}>
                     <TrashIcon>delete</TrashIcon>

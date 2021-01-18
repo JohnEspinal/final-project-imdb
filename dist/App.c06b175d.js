@@ -35170,44 +35170,43 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleSelect", function (e) {
-      var LOl = []; // eslint-disable-next-line no-plusplus
-
-      for (var i = 0; i < e.length; i++) {
-        LOl.push(e[i].value);
-      }
-
-      _this.setState.languages(LOl);
-    });
-
     _defineProperty(_assertThisInitialized(_this), "submitHandler", /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+        var data;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                data = {
+                  title: 'avengers',
+                  description: '23 días después de que Thanos usara el Guantelete del Infinito para desintegrar la mitad de la vida en el universo, Carol Danvers rescata a Tony Stark y Nebula del espacio profundo y los devuelve a la Tierra, donde se reúnen con los Vengadores restantes: Bruce Banner, Steve Rogers, Thor, Natasha Romanoff, James Rhodes, y Rocket. Al ubicar a Thanos en un planeta deshabitado, planean usar las Gemas del Infinito para revertir "el chasquido", pero Thanos revela que destruyó las Gemas para evitar un uso posterior. Enfurecido, Thor decapita a Thanos.',
+                  movieReleaseDate: 2012,
+                  cast: ['Chris Evans', 'Robert Downey Jr.'],
+                  genres: ['action'],
+                  languages: ['espanol ', ' ingles']
+                };
                 e.preventDefault();
-                _context.prev = 1;
-                _context.next = 4;
-                return _axios.default.get('http://localhost:3001/movies/add', _this.state).then(function (res) {
+                _context.prev = 2;
+                _context.next = 5;
+                return _axios.default.post('http://localhost:3001/movies/add', data).then(function (res) {
                   console.log(res);
                 });
 
-              case 4:
-                _context.next = 9;
+              case 5:
+                _context.next = 10;
                 break;
 
-              case 6:
-                _context.prev = 6;
-                _context.t0 = _context["catch"](1);
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 6]]);
+        }, _callee, null, [[2, 7]]);
       }));
 
       return function (_x) {
@@ -35218,9 +35217,10 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: '',
       description: '',
+      movieReleaseDate: '',
       cast: [],
-      languages: [],
-      Date: ''
+      genre: [],
+      languages: []
     };
     return _this;
   }
@@ -35238,7 +35238,7 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
         className: "form"
       }, /*#__PURE__*/_react.default.createElement("form", {
         onSubmit: this.submitHandler
-      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Title"), /*#__PURE__*/_react.default.createElement("input", {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Create Movie"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Title"), /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
         name: "title",
         value: title,
@@ -35248,23 +35248,28 @@ var MovieForm = /*#__PURE__*/function (_React$Component) {
         name: "description",
         value: description,
         onChange: this.changeHandler
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("select", {
-        name: "cars",
-        id: "cars"
-      }, /*#__PURE__*/_react.default.createElement("option", {
-        value: "volvo"
-      }, "Volvo"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "saab"
-      }, "Saab"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "mercedes"
-      }, "Mercedes"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "audi"
-      }, "Audi"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Date"), /*#__PURE__*/_react.default.createElement("input", {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Date"), /*#__PURE__*/_react.default.createElement("input", {
         type: "date",
         name: "date",
         value: postedDate,
         onChange: this.changeHandler
-      })), /*#__PURE__*/_react.default.createElement("button", {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Cast"), /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        name: "cast",
+        value: cast
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Genre"), /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", {
+        value: "romance"
+      }, "Romance"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "accion"
+      }, "Accion"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "terror"
+      }, "Terror"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "horror"
+      }, "horror"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Languages"), /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", {
+        value: "espanol"
+      }, "Espa\xF1ol"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "ingles"
+      }, "Ingles")))), /*#__PURE__*/_react.default.createElement("button", {
         type: "submit"
       }, "Submit")));
     }
@@ -37418,7 +37423,9 @@ var NavBar = function NavBar() {
     href: "/movies/add"
   }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "/"
-  }, "Movies")))));
+  }, "Movies")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "/movies/edit/id"
+  }, "Edit")))));
 };
 
 var _default = NavBar;
@@ -37627,10 +37634,10 @@ var Results = /*#__PURE__*/function (_React$Component) {
       var movies = this.state.movies;
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Movies list"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("table", {
         cellSpacing: "30",
-        border: "1"
+        border: "1 solid black"
       }, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("th", null, "Title"), /*#__PURE__*/_react.default.createElement("th", null, " Description "), /*#__PURE__*/_react.default.createElement("th", null, "Cast"), /*#__PURE__*/_react.default.createElement("th", null, "Languages"))), /*#__PURE__*/_react.default.createElement("tbody", null, this.state.movies.map(function (item, i) {
         return /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, item.title), /*#__PURE__*/_react.default.createElement("td", null, item.description), /*#__PURE__*/_react.default.createElement("td", null, item.cast), /*#__PURE__*/_react.default.createElement("td", null, item.languages), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-          to: "/movies/edit/".concat(item._id)
+          to: "/movies/edit/id"
         }, "Edit")), /*#__PURE__*/_react.default.createElement("span", {
           onClick: function onClick() {
             return _this3.delete(item._id);
@@ -37668,10 +37675,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37711,66 +37714,35 @@ var MovieFormUpdate = /*#__PURE__*/function (_React$Component) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
     });
 
+    _defineProperty(_assertThisInitialized(_this), "update", function () {
+      var data = {
+        title: 'titanic 3',
+        description: 'fue un transatlántico británico, el mayor barco de pasajeros del mundo al finalizar su construcción, que se hundió durante la noche del 14 y la madrugada del 15 de abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. En el hundimiento del Titanic murieron 1496 personas de las 2208 que iban a bordo, lo que convierte a esta catástrofe en uno de los mayores naufragios de la historia ocurridos en tiempos de paz. Siendo construido entre 1909 y 1912 en los astilleros de Harland & Wolff de Belfast, el Titanic constituía el segundo buque de un trío de grandes transatlánticos (siendo el primero el RMS Olympic y el tercero el HMHS Britannic), los cuales eran propiedad de la compañía naviera White Star Line, conocidos como la clase Olympic.,',
+        movieReleaseDate: 2011,
+        cast: ['Leonardo Di Caprio', 'Rose'],
+        genre: ['action', ' romance'],
+        languages: ['español', ' ingles']
+      };
+
+      _axios.default.put('http://localhost:3001/movies/edit/600613d4fde07717881f3232', data).then(function (data) {
+        console.log(data);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    });
+
     _this.state = {
       title: '',
       description: '',
+      movieReleaseDate: '',
       cast: [],
-      languages: [],
-      date: ''
+      genre: [],
+      languages: []
     };
     return _this;
   }
 
   _createClass(MovieFormUpdate, [{
-    key: "componentDidMount",
-    value: function () {
-      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(_id) {
-        var _this2 = this;
-
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                fetch("http://localhost:3001/movies/edit/".concat(_id)).then(response.json().then(function (result) {
-                  _this2.setState({
-                    title: result.title,
-                    description: result.description,
-                    cast: result.cast,
-                    languages: result.languages,
-                    date: result.date
-                  });
-                }));
-
-              case 1:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      function componentDidMount(_x) {
-        return _componentDidMount.apply(this, arguments);
-      }
-
-      return componentDidMount;
-    }()
-  }, {
-    key: "update",
-    value: function update() {
-      fetch("http://localhost:3001/movies/edit/".concat(_id), {
-        method: 'PUT',
-        headers: {
-          'content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.state)
-      }).then(function (result) {
-        result.json().then(function (resp) {
-          alert('movie has been updated');
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$state = this.state,
@@ -37782,8 +37754,8 @@ var MovieFormUpdate = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "form"
       }, /*#__PURE__*/_react.default.createElement("form", {
-        onSubmit: this.submitHandler
-      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Title"), /*#__PURE__*/_react.default.createElement("input", {
+        onSubmit: this.update
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Edit Movie"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Title"), /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
         name: "title",
         value: title,
@@ -37793,23 +37765,28 @@ var MovieFormUpdate = /*#__PURE__*/function (_React$Component) {
         name: "description",
         value: description,
         onChange: this.changeHandler
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("select", {
-        name: "cars",
-        id: "cars"
-      }, /*#__PURE__*/_react.default.createElement("option", {
-        value: "volvo"
-      }, "Volvo"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "saab"
-      }, "Saab"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "mercedes"
-      }, "Mercedes"), /*#__PURE__*/_react.default.createElement("option", {
-        value: "audi"
-      }, "Audi"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Date"), /*#__PURE__*/_react.default.createElement("input", {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Date"), /*#__PURE__*/_react.default.createElement("input", {
         type: "date",
         name: "date",
         value: postedDate,
         onChange: this.changeHandler
-      })), /*#__PURE__*/_react.default.createElement("button", {
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Cast"), /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        name: "cast",
+        value: cast
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Genre"), /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", {
+        value: "romance"
+      }, "Romance"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "accion"
+      }, "Accion"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "terror"
+      }, "Terror"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "horror"
+      }, "horror"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Languages"), /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", {
+        value: "espanol"
+      }, "Espa\xF1ol"), /*#__PURE__*/_react.default.createElement("option", {
+        value: "ingles"
+      }, "Ingles")))), /*#__PURE__*/_react.default.createElement("button", {
         type: "submit"
       }, "Submit")));
     }
@@ -37879,7 +37856,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53077" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53875" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

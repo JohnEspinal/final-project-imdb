@@ -16,9 +16,10 @@ export default class MovieForm extends React.Component {
     this.state = {
       title: '',
       description: '',
+      movieReleaseDate: '',
       cast: [],
+      genre:[],
       languages: [],
-      Date: '',
     };
   }
 
@@ -26,20 +27,19 @@ export default class MovieForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSelect = (e) => {
-    const LOl = [];
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < e.length; i++) {
-      LOl.push(e[i].value);
-    }
-    this.setState.languages(LOl);
-  };
-
   submitHandler = async (e) => {
+    const data = {
+      title: 'avengers',
+      description: '23 días después de que Thanos usara el Guantelete del Infinito para desintegrar la mitad de la vida en el universo, Carol Danvers rescata a Tony Stark y Nebula del espacio profundo y los devuelve a la Tierra, donde se reúnen con los Vengadores restantes: Bruce Banner, Steve Rogers, Thor, Natasha Romanoff, James Rhodes, y Rocket. Al ubicar a Thanos en un planeta deshabitado, planean usar las Gemas del Infinito para revertir "el chasquido", pero Thanos revela que destruyó las Gemas para evitar un uso posterior. Enfurecido, Thor decapita a Thanos.',
+      movieReleaseDate: 2012,
+      cast: ['Chris Evans', 'Robert Downey Jr.'],
+      genres: ['action'],
+      languages: ['espanol ', ' ingles'],
+    };
     e.preventDefault();
     try {
       await axios
-        .get('http://localhost:3001/movies/add', this.state)
+        .post('http://localhost:3001/movies/add', data)
         .then((res) => {
           console.log(res);
         });
@@ -55,6 +55,7 @@ export default class MovieForm extends React.Component {
     return (
       <div className="form">
         <form onSubmit={this.submitHandler}>
+          <h1>Create Movie</h1>
           <div>
             <p>Title</p>
             <input
@@ -74,15 +75,6 @@ export default class MovieForm extends React.Component {
             />
           </div>
           <div>
-            <select name="cars" id="cars">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-          </div>
-          <div />
-          <div>
             <p>Date</p>
             <input
               type="date"
@@ -90,6 +82,32 @@ export default class MovieForm extends React.Component {
               value={postedDate}
               onChange={this.changeHandler}
             />
+          </div>
+          <div>
+          <div>
+            <p>Cast</p>
+            <input
+              type="text"
+              name="cast"
+              value={cast}
+            />
+          </div>
+          <div>
+            <p>Genre</p>
+            <select>
+              <option value="romance">Romance</option>
+              <option value="accion">Accion</option>
+              <option value="terror">Terror</option>
+              <option value="horror">horror</option>
+            </select>
+          </div>
+          <div>
+            <p>Languages</p>
+            <select>
+              <option value="espanol">Español</option>
+              <option value="ingles">Ingles</option>
+            </select>
+          </div>
           </div>
           <button type="submit">Submit</button>
         </form>
